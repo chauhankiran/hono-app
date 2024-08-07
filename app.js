@@ -1,13 +1,14 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import postgres from "postgres";
+import "dotenv/config";
 
 const sql = postgres({
-  host: "localhost",
-  port: 5432,
-  username: "postgres",
-  password: "password",
-  database: "hono",
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
 });
 
 const app = new Hono();
